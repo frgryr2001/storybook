@@ -30,7 +30,10 @@ const MyLabel: FC<MyLabelProps> = ({
   color,
 }) => {
   return (
-    <span className={`${size}`} style={{ backgroundColor, color }}>
+    <span
+      className={`${size} bg-violet-500`}
+      style={{ backgroundColor, color }}
+    >
       {label}
     </span>
   );
