@@ -12,29 +12,45 @@ export interface MyLabelProps {
   size: 'normal' | 'h1' | 'h2' | 'h3';
   /**
    * What background color to use?
-   * @default #ff0000
+   * @default #ffffff
    *
    */
   backgroundColor?: string;
+
+  /**
+   * Should the label be all caps?
+   * @default false
+   */
+  allCaps: boolean;
+
   /**
    * What text color to use?
-   * @default #ffffff
+   * @default primary
    */
-  color?: string;
+  color: 'primary' | 'secondary' | 'tertiary';
+
+  /**
+   * What font color to use?
+   * @default #000000
+   *
+   */
+  fontColor?: string;
 }
 
 const MyLabel: FC<MyLabelProps> = ({
-  label = 'No label',
+  label = 'My label',
   size = 'normal',
-  backgroundColor,
-  color,
+  backgroundColor = '#ffffff',
+  color = 'primary',
+  allCaps = false,
+  fontColor,
 }) => {
   return (
     <span
-      className={`${size} bg-violet-500`}
-      style={{ backgroundColor, color }}
+      className={`${size} bg-violet-500 text-${color}`}
+      style={{ backgroundColor, color: fontColor }}
     >
-      {label}
+      {allCaps ? label.toUpperCase() : label}
     </span>
   );
 };
